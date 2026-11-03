@@ -1,0 +1,146 @@
+{
+  "gradient_at_origin": [
+    -8.16161616161616,
+    -4.0
+  ],
+  "gradient_accumulation_verified": true,
+  "closed_form_verified_for_convergent_runs": true,
+  "divergent_w_recurrence_verified": true,
+  "divergent_bias_note": "Large residuals cause float32 cancellation; b can deviate from the exact recurrence.",
+  "a": 1.3602693602693603,
+  "learning_rate_convergence_upper_bound": 0.7351485148514851,
+  "experiments": [
+    {
+      "name": "baseline",
+      "learning_rate": 0.1,
+      "initial_w": 0.0,
+      "initial_b": 0.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 16.24242401123047,
+      "final": {
+        "step": 101,
+        "w": 2.999999761581421,
+        "b": 1.999999761581421,
+        "loss": 1.6456169651783703e-13
+      }
+    },
+    {
+      "name": "slow_lr_0.01",
+      "learning_rate": 0.01,
+      "initial_w": 0.0,
+      "initial_b": 0.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 16.24242401123047,
+      "final": {
+        "step": 101,
+        "w": 2.814962863922119,
+        "b": 1.740065574645996,
+        "loss": 0.11413981765508652
+      }
+    },
+    {
+      "name": "fast_lr_0.5",
+      "learning_rate": 0.5,
+      "initial_w": 0.0,
+      "initial_b": 0.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 16.24242401123047,
+      "final": {
+        "step": 101,
+        "w": 3.0,
+        "b": 2.0,
+        "loss": 0.0
+      }
+    },
+    {
+      "name": "oscillating_lr_0.7",
+      "learning_rate": 0.7,
+      "initial_w": 0.0,
+      "initial_b": 0.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 16.24242401123047,
+      "final": {
+        "step": 101,
+        "w": 3.000117063522339,
+        "b": 2.0,
+        "loss": 1.8644112032006888e-08
+      }
+    },
+    {
+      "name": "diverging_lr_0.8",
+      "learning_rate": 0.8,
+      "initial_w": 0.0,
+      "initial_b": 0.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 16.24242401123047,
+      "final": {
+        "step": 101,
+        "w": 40209820.0,
+        "b": 3.689995288848877,
+        "loss": 2199323500609536.0
+      }
+    },
+    {
+      "name": "init_10_minus8",
+      "learning_rate": 0.1,
+      "initial_w": 10.0,
+      "initial_b": -8.0,
+      "steps": 101,
+      "seed": 42,
+      "device": "cpu",
+      "dtype": "float32",
+      "samples": 100,
+      "x_range": [
+        -2,
+        2
+      ],
+      "initial_loss": 166.6531982421875,
+      "final": {
+        "step": 101,
+        "w": 3.000000238418579,
+        "b": 1.999999761581421,
+        "loss": 1.5546674462119797e-13
+      }
+    }
+  ]
+}
