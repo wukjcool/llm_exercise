@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 900" role="img" aria-labelledby="title desc">
+  <title id="title">第八节：两个字的向量怎样合成一个向量</title>
+  <desc id="desc">查询向量分别和去、北的向量做点积，得到一分和五分。Softmax 得到两个权重，再用这两个权重对原来的字向量加权求和。</desc>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#1e293b" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'SF Mono', 'PingFang SC', 'Noto Sans SC', sans-serif; }
+      .title { font-size: 29px; font-weight: 700; }
+      .heading { font-size: 22px; font-weight: 700; }
+      .note { font-size: 16px; fill: #b1c2d8; }
+      .label { font-size: 17px; font-weight: 600; }
+      .data { font-size: 18px; }
+      .step { font-size: 16px; fill: #60a5fa; font-weight: 700; }
+      .badge { font-size: 16px; fill: #bfdbfe; font-weight: 700; }
+      .query { fill: #fcd68a; }
+      .qu { fill: #67e8f9; }
+      .bei { fill: #c4b5fd; }
+      .card { fill: #132039; stroke: #334e71; stroke-width: 1.25; }
+      .row { fill: #0d182c; }
+    </style>
+  </defs>
+
+  <rect width="920" height="900" fill="#0f172a"/>
+  <rect width="920" height="900" fill="url(#grid)"/>
+  <path d="M460 252V279 M460 436V463 M460 621V648" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  <path d="M454 277H466L460 286Z M454 461H466L460 470Z M454 646H466L460 655Z" fill="#60a5fa"/>
+
+  <rect class="card" x="40" y="92" width="840" height="153" rx="14"/>
+  <rect class="card" x="40" y="292" width="840" height="137" rx="14"/>
+  <rect class="card" x="40" y="476" width="840" height="138" rx="14"/>
+  <rect class="card" x="40" y="661" width="840" height="173" rx="14"/>
+  <rect class="row" x="64" y="140" width="792" height="87" rx="8"/>
+  <rect class="row" x="64" y="340" width="792" height="44" rx="8"/>
+  <rect class="row" x="64" y="758" width="792" height="42" rx="8"/>
+  <rect x="758" y="106" width="98" height="29" rx="8" fill="#203b62"/>
+  <rect x="758" y="306" width="98" height="29" rx="8" fill="#203b62"/>
+  <rect x="758" y="490" width="98" height="29" rx="8" fill="#203b62"/>
+  <rect x="758" y="675" width="98" height="29" rx="8" fill="#203b62"/>
+  <rect x="65" y="565" width="790" height="10" rx="5" fill="#a78bfa"/>
+  <path d="M70 565H79.2V575H70A5 5 0 0 1 70 565Z" fill="#67e8f9"/>
+
+  <text class="step" fill="#60a5fa" x="65" y="127">00</text>
+  <text class="heading" fill="#e2e8f0" x="104" y="127">输入 · 两个字向量和一个查询</text>
+  <text class="badge" fill="#bfdbfe" x="807" y="127" text-anchor="middle">每个 [4]</text>
+  <text class="label qu" fill="#67e8f9" x="78" y="162">去 · qu</text>
+  <text class="data qu" fill="#67e8f9" x="254" y="162">[1, 2, 3, 4]</text>
+  <text class="label bei" fill="#c4b5fd" x="78" y="187">北 · bei</text>
+  <text class="data bei" fill="#c4b5fd" x="254" y="187">[5, 6, 7, 8]</text>
+  <text class="label query" fill="#fcd68a" x="78" y="212">查询 · query</text>
+  <text class="data query" fill="#fcd68a" x="254" y="212">[1, 0, 0, 0]</text>
+  <text class="note" fill="#b1c2d8" x="515" y="162">第 5、6 行 · 这两个向量</text>
+  <text class="note" fill="#b1c2d8" x="515" y="187">既参与打分（K），也参与求和（V）。</text>
+  <text class="note" fill="#b1c2d8" x="515" y="212">第 9 行 · 同一个查询（Q）</text>
+
+  <text class="step" fill="#60a5fa" x="65" y="326">01</text>
+  <text class="heading" fill="#e2e8f0" x="104" y="326">点积 · 每个位置得到一个分数</text>
+  <text class="badge" fill="#bfdbfe" x="807" y="327" text-anchor="middle">[2]</text>
+  <text class="data qu" fill="#67e8f9" x="78" y="367">去：query · qu = 1</text>
+  <text class="data bei" fill="#c4b5fd" x="473" y="367">北：query · bei = 5</text>
+  <text class="note" fill="#b1c2d8" x="65" y="408">第 11–13 行 · Q 的第一项为 1，其余为 0，所以点积只取两个向量的第一项。</text>
+
+  <text class="step" fill="#60a5fa" x="65" y="510">02</text>
+  <text class="heading" fill="#e2e8f0" x="104" y="510">Softmax · 把分数换成权重</text>
+  <text class="badge" fill="#bfdbfe" x="807" y="511" text-anchor="middle">[2]</text>
+  <text class="data qu" fill="#67e8f9" x="65" y="550">去：0.0180（1.8%）</text>
+  <text class="data bei" fill="#c4b5fd" x="855" y="550" text-anchor="end">北：0.9820（98.2%）</text>
+  <text class="note" fill="#b1c2d8" x="65" y="598">第 17 行 · 两个分数一起做 Softmax。分数高的「北」分到更多权重。</text>
+
+  <text class="step" fill="#60a5fa" x="65" y="696">03</text>
+  <text class="heading" fill="#e2e8f0" x="104" y="696">加权求和 · 合成上下文向量</text>
+  <text class="badge" fill="#bfdbfe" x="807" y="696" text-anchor="middle">[4]</text>
+  <text class="data" fill="#e2e8f0" x="65" y="735">context = <tspan class="qu" fill="#67e8f9">weights[0] × qu</tspan> + <tspan class="bei" fill="#c4b5fd">weights[1] × bei</tspan></text>
+  <text class="data" fill="#e2e8f0" x="82" y="785">[4.9281, 5.9281, 6.9281, 7.9281]</text>
+  <text class="note" fill="#b1c2d8" x="65" y="822">第 19 行 · 第一项 ≈ 0.0180 × 1 + 0.9820 × 5，其余三项用同一对权重。</text>
+
+  <text class="note" fill="#b1c2d8" x="40" y="870">K 参与打分，V 参与合成。图中的权重和结果按程序输出保留四位小数。</text>
+  <text class="title" fill="#e2e8f0" x="40" y="48">第八节 · 两个字的向量怎样合成一个向量</text>
+  <text class="note" fill="#b1c2d8" x="40" y="74">沿着当前 train.py，从点积打分走到加权求和。</text>
+</svg>

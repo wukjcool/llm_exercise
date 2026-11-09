@@ -1,7 +1,0 @@
-baseline                 w=2.9999998 b=1.9999998 loss=1.645617e-13
-slow_lr_0.01             w=2.8149629 b=1.7400656 loss=0.11413982
-fast_lr_0.5              w=3 b=2 loss=0
-oscillating_lr_0.7       w=3.0001171 b=2 loss=1.8644112e-08
-diverging_lr_0.8         w=40209820 b=3.6899953 loss=2.1993235e+15
-init_10_minus8           w=3.0000002 b=1.9999998 loss=1.5546674e-13
-PASS: analytical gradients, accumulation, convergent recurrences, divergent w recurrence and loss growth

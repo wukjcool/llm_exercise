@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 930" role="img" aria-labelledby="title desc">
+  <title id="title">第七节：两个字怎样变成下一字的分数</title>
+  <desc id="desc">去北和在北两条样本依次经过 Embedding、Flatten 和 Linear。形状依次为二乘二、二乘二乘四、二乘八、二乘五。</desc>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#1e293b" stroke-width="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0 0L9 4L0 8Z" fill="#60a5fa"/>
+    </marker>
+    <style>
+      text { font-family: 'JetBrains Mono', 'SF Mono', 'PingFang SC', 'Noto Sans SC', sans-serif; fill: #e2e8f0; }
+      .title { font-size: 28px; font-weight: 700; }
+      .subtitle { font-size: 15px; fill: #94a3b8; }
+      .heading { font-size: 20px; font-weight: 700; }
+      .number { font-size: 14px; fill: #60a5fa; font-weight: 700; }
+      .sample { font-size: 16px; font-weight: 600; }
+      .data { font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace; font-size: 15px; }
+      .shape { font-size: 17px; font-weight: 700; fill: #bfdbfe; }
+      .first { fill: #67e8f9; }
+      .north { fill: #c4b5fd; }
+      .card { fill: #132039; stroke: #334e71; stroke-width: 1.25; }
+      .row { fill: #0d182c; }
+      .arrow { stroke: #60a5fa; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="950" height="930" fill="#0f172a"/>
+  <rect width="950" height="930" fill="url(#grid)"/>
+  <path d="M475 222V255 M475 448V481 M475 654V687" fill="none" stroke="#60a5fa" stroke-width="2"/>
+  <path d="M469 254H481L475 265Z M469 480H481L475 491Z M469 686H481L475 697Z" fill="#60a5fa"/>
+
+  <text class="title" x="44" y="47">第七节 · 两个字怎样变成下一字的分数</text>
+  <text class="subtitle" x="44" y="73">去北、在北 · 同一批次的前向计算 · 数值取自训练前，保留三位小数</text>
+
+  <rect class="card" x="44" y="92" width="862" height="120" rx="14"/>
+  <rect x="766" y="107" width="114" height="30" rx="8" fill="#203b62"/>
+  <text class="shape" x="823" y="128" text-anchor="middle">[2, 2]</text>
+  <text class="number" x="68" y="125">00</text>
+  <text class="heading" x="106" y="125">输入 · 字符编号</text>
+  <rect class="row" x="64" y="145" width="822" height="52" rx="7"/>
+  <text class="sample" x="82" y="165">去北</text>
+  <text class="data" x="200" y="165">[<tspan class="first">0</tspan>, <tspan class="north">1</tspan>]</text>
+  <text class="sample" x="82" y="187">在北</text>
+  <text class="data" x="200" y="187">[<tspan class="first">3</tspan>, <tspan class="north">1</tspan>]</text>
+  <text class="subtitle" x="405" y="176">2 条样本，每条有 2 个字符编号</text>
+
+  <rect class="card" x="44" y="272" width="862" height="166" rx="14"/>
+  <rect x="744" y="287" width="136" height="30" rx="8" fill="#203b62"/>
+  <text class="shape" x="812" y="308" text-anchor="middle">[2, 2, 4]</text>
+  <text class="number" x="68" y="305">01</text>
+  <text class="heading" x="106" y="305">Embedding · 查字向量</text>
+  <text class="subtitle" x="68" y="333">每个编号换成一组 4 个数，同一个「北」取到同一行。</text>
+  <rect class="row" x="64" y="348" width="822" height="70" rx="7"/>
+  <text class="sample" x="82" y="375">去北</text>
+  <text class="sample first" x="163" y="375">去</text>
+  <text class="data first" x="198" y="375">[1.927, 1.487, 0.901, -2.106]</text>
+  <text class="sample north" x="523" y="375">北</text>
+  <text class="data north" x="558" y="375">[-0.758, 1.078, 0.801, 1.681]</text>
+  <text class="sample" x="82" y="404">在北</text>
+  <text class="sample first" x="163" y="404">在</text>
+  <text class="data first" x="198" y="404">[-0.232, 0.042, -0.252, 0.860]</text>
+  <text class="sample north" x="523" y="404">北</text>
+  <text class="data north" x="558" y="404">[-0.758, 1.078, 0.801, 1.681]</text>
+
+  <rect class="card" x="44" y="498" width="862" height="146" rx="14"/>
+  <rect x="766" y="513" width="114" height="30" rx="8" fill="#203b62"/>
+  <text class="shape" x="823" y="534" text-anchor="middle">[2, 8]</text>
+  <text class="number" x="68" y="531">02</text>
+  <text class="heading" x="106" y="531">Flatten · 拼成一行</text>
+  <text class="subtitle" x="68" y="558">保留样本维。每条样本的前一个字占前 4 列，「北」占后 4 列。</text>
+  <rect class="row" x="64" y="573" width="822" height="53" rx="7"/>
+  <text class="sample" x="82" y="594">去北</text>
+  <text class="data" x="162" y="594">[<tspan class="first">1.927, 1.487, 0.901, -2.106</tspan>, <tspan class="north">-0.758, 1.078, 0.801, 1.681</tspan>]</text>
+  <text class="sample" x="82" y="617">在北</text>
+  <text class="data" x="162" y="617">[<tspan class="first">-0.232, 0.042, -0.252, 0.860</tspan>, <tspan class="north">-0.758, 1.078, 0.801, 1.681</tspan>]</text>
+
+  <rect class="card" x="44" y="704" width="862" height="165" rx="14"/>
+  <rect x="766" y="719" width="114" height="30" rx="8" fill="#203b62"/>
+  <text class="shape" x="823" y="740" text-anchor="middle">[2, 5]</text>
+  <text class="number" x="68" y="737">03</text>
+  <text class="heading" x="106" y="737">Linear · 给候选字打分</text>
+  <text class="subtitle" x="68" y="765">用每行的 8 个数，算出词表中 5 个字的原始分数。</text>
+  <text class="sample" x="267" y="793" text-anchor="middle">去</text>
+  <text class="sample" x="402" y="793" text-anchor="middle">北</text>
+  <text class="sample" x="537" y="793" text-anchor="middle">京</text>
+  <text class="sample" x="672" y="793" text-anchor="middle">在</text>
+  <text class="sample" x="807" y="793" text-anchor="middle">方</text>
+  <rect class="row" x="64" y="801" width="822" height="53" rx="7"/>
+  <text class="sample" x="82" y="822">去北</text>
+  <text class="data" x="267" y="822" text-anchor="middle">1.037</text>
+  <text class="data" x="402" y="822" text-anchor="middle">-0.521</text>
+  <text class="data" x="537" y="822" text-anchor="middle">-0.473</text>
+  <text class="data" x="672" y="822" text-anchor="middle">0.053</text>
+  <text class="data" x="807" y="822" text-anchor="middle">-2.182</text>
+  <text class="sample" x="82" y="845">在北</text>
+  <text class="data" x="267" y="845" text-anchor="middle">0.130</text>
+  <text class="data" x="402" y="845" text-anchor="middle">-0.786</text>
+  <text class="data" x="537" y="845" text-anchor="middle">0.010</text>
+  <text class="data" x="672" y="845" text-anchor="middle">-0.132</text>
+  <text class="data" x="807" y="845" text-anchor="middle">-1.439</text>
+
+  <text class="subtitle" x="44" y="907">形状的第一个数字始终是样本数：两条样本各走完同样的三步。</text>
+</svg>

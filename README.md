@@ -1,27 +1,25 @@
 # LLM Exercise
 
-大模型核心研发学习实验。当前仅包含第一节：用 PyTorch 训练线性模型，学习自动微分与梯度下降。
+大模型核心研发学习实验。目前完成了八节 PyTorch 练习，从线性模型与梯度下降走到下一字符预测和自注意力。
 
-## 快速运行
+## 当前状态
 
-在本仓库目录运行；本机已经配置好 `.venv`，可直接执行：
-
-```bash
-.venv/bin/python train.py
-```
-
-或激活环境后运行：
-
-```bash
-source .venv/bin/activate
-python train.py
-```
+- [学习笔记](notes/learning-notes.md)收录了 Lesson 1–8 的代码入口、公式和流程图。
+- [协作约定与进度](LEARNING.md)记录学习方式和阶段路线。
 
 ## VS Code：F5 运行
 
-在 VS Code 中单独打开 `llm_exercise` 文件夹，按 **F5**，使用“第一节：训练线性模型”配置。程序固定运行 `train.py`，使用本目录的 `.venv/bin/python`，输出显示在集成终端；可在代码行旁设置断点。
+在 VS Code 中单独打开 `llm_exercise` 文件夹，打开要运行的 Python 文件，保存后按 **F5**。Python 调试器使用本目录的 `.venv/bin/python` 运行当前文件（`${file}`），自动打开 **Debug Console（调试控制台）** 显示 `print()` 输出，支持断点调试。
 
-需要 Microsoft Python 和 Python Debugger 扩展，本仓库已添加扩展推荐。调试配置只进入自己的代码，不单步进入 PyTorch 内部实现。配置方式见 [VS Code 官方文档](https://code.visualstudio.com/docs/python/debugging)。
+使用 VS Code 默认的 F5 调试快捷键，之前为本项目添加的 Code Runner F5 绑定已移除。配置见 `.vscode/launch.json`，其中 `console` 为 `internalConsole`；Python 和 Python Debugger 已加入扩展推荐。
+
+需要选择配置时，使用“Python：运行当前文件”。调试控制台不支持程序的 `input()` 交互输入；之后遇到此类程序时再切换到集成终端。
+
+也可以在本仓库目录运行：
+
+```bash
+.venv/bin/python lessons/08-attention/train.py
+```
 
 ## 重建环境
 
@@ -30,24 +28,6 @@ python train.py
 ```bash
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r lessons/01-linear-model/requirements-lock.txt
-.venv/bin/python lessons/01-linear-model/check_environment.py
 ```
 
-虚拟环境不适合直接复制到其他路径或提交 Git；移动或克隆仓库后，按上述命令重建。
-
-## 实验与记录
-
-- [训练代码](train.py)：默认执行 101 次更新，逐步记录参数和损失。
-- [第一节笔记](lessons/01-linear-model/README.md)：数学推导、实验结果、复现命令与待解问题。
-- [协作约定与学习路线](LEARNING.md)：目标、学习方式与当前进度。
-- `lessons/01-linear-model/results/`：CSV、配置摘要、运行日志和曲线。
-
-训练、对照和绘图可分别运行：
-
-```bash
-.venv/bin/python train.py
-.venv/bin/python lessons/01-linear-model/experiments.py
-.venv/bin/python lessons/01-linear-model/plot.py
-```
-
-这些命令会更新对应的结果文件。本地 `.venv/`、Python 缓存和 `.DS_Store` 已被 Git 忽略；代码、锁定依赖和实验记录纳入版本管理。
+本地 `.venv/`、Python 缓存和 `.DS_Store` 已被 Git 忽略。移动或克隆仓库后，按上述命令重建虚拟环境。
