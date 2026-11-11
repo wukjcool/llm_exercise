@@ -1,10 +1,10 @@
 # LLM Exercise
 
-大模型核心研发学习实验。目前完成了八节 PyTorch 练习，从线性模型与梯度下降走到下一字符预测和自注意力。
+大模型核心研发学习实验。目前进行到 Lesson 11，从线性模型与梯度下降走到因果掩码、多头注意力和前馈网络。
 
 ## 当前状态
 
-- [学习笔记](notes/learning-notes.md)收录了 Lesson 1–8 的代码入口、公式和流程图。
+- [学习笔记](notes/learning-notes.md)收录了 Lesson 1–11 的代码入口、公式和流程图。
 - [协作约定与进度](LEARNING.md)记录学习方式和阶段路线。
 
 ## VS Code：F5 运行
