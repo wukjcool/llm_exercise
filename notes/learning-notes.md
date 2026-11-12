@@ -335,7 +335,7 @@ ffn_output = ffn(normalized_output)
 | GELU | `[2, 16]` | 对每个中间特征执行非线性变换 |
 | Linear(16, 4) | `[2, 4]` | 将加工后的特征组合回四维 |
 
-GELU 的全称是 Gaussian Error Linear Unit。对标量 x，它定义为 $\operatorname{GELU}(x)=x\Phi(x)$，其中 $\Phi$ 是标准正态分布的累积分布函数。PyTorch 在各个张量元素上分别应用这个函数。
+GELU 的全称是 Gaussian Error Linear Unit。对标量 x，它定义为 $\mathrm{GELU}(x)=x\Phi(x)$，其中 $\Phi$ 是标准正态分布的累积分布函数。PyTorch 在各个张量元素上分别应用这个函数。
 
 ### FFN 输出的作用和当前结果
 
@@ -511,7 +511,7 @@ $$
 **对数概率**是概率的自然对数 $\ell_i=\ln p_i$。**`log_softmax`** 是从原始分数计算对数概率的函数。
 
 $$
-\ell_i = \operatorname{log\_softmax}(z)_i
+\ell_i = \mathrm{log\_softmax}(z)_i
        = z_i-\ln\!\left(\sum_j e^{z_j}\right),
 \qquad p_i=e^{\ell_i}.
 $$
@@ -551,7 +551,7 @@ $$
 Z=\frac{X-\mu}{\sigma}.
 $$
 
-则 $\mathbb E[Z]=0$，$\operatorname{Var}(Z)=1$。如果进一步假设 $X\sim N(\mu,\sigma^2)$，就有 $Z\sim N(0,1)$。标准化后的分布形状取决于原始分布，正态假设给出了标准正态分布这一结论。
+则 $\mathbb E[Z]=0$，$\mathrm{Var}(Z)=1$。如果进一步假设 $X\sim N(\mu,\sigma^2)$，就有 $Z\sim N(0,1)$。标准化后的分布形状取决于原始分布，正态假设给出了标准正态分布这一结论。
 
 LayerNorm 也执行减均值、除标准差。这里的均值和方差来自一个 token 的特征值。
 

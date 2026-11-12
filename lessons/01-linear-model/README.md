@@ -78,7 +78,7 @@ a=\frac1n\sum_i x_i^2=\frac{4(n+1)}{3(n-1)}=\frac{404}{297}\approx1.36026936.
 代入 y=3x+2 后交叉项消失：
 
 \[
-L=a(w-3)^2+(b-2)^2,\qquad H=\operatorname{diag}(2a,2).
+L=a(w-3)^2+(b-2)^2,\qquad H=\mathrm{diag}(2a,2).
 \]
 
 因此损失是严格凸二次函数，唯一最小点为 (3,2)。梯度下降给出
